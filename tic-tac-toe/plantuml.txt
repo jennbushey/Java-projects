@@ -1,0 +1,83 @@
+@startuml
+
+abstract class Player{
+    # name: String
+    # board: board
+    # opponent: Player
+    # mark: char
+    # play(): void
+    # makeMove(): void
+    # setOpponent(Player): void
+    # setBoard(theBoard: Board): void
+}
+
+class Referee{
+    - xPlayer: Player
+    - oPlayer: Player
+    - board: Board
+    + runTheGame(): void
+    + setBoard(theBoard: Board): void
+    + setxPlayer(xPlayer: Player): void
+    + setoPlayer(oPlayer: Player): void
+}
+
+class RandomPlayer{
+    # play(): void
+    # makeMove(): void
+}
+
+class HumanPlayer{
+    # play(): void
+    # makeMove(): void
+}
+
+class BlockingPlayer{
+    # makeMove(): void
+    # testForBlocking(row: int, col: int): boolean
+}
+
+class SmartPlayer{
+    # makeMove(): void
+    # testForWinning(row: int, col: int): boolean
+}
+
+class Game{
+    - theBoard : Board
+    - theRef: Referee
+    - xPlayer: Player
+    - oPlayer: Player
+    - appointReferee(r: Referee) : void
+}
+
+class Board{
+    - square[][]: char
+    - markCount : int
+    + xWins(): boolean
+    + oWins(): boolean
+    + isFull(): boolean
+    + getMark(row: int, col: int): char
+    + putMark(row: int, col: int, mark: char): void
+    + display(): void
+    + checkWinner(): boolean
+}
+
+interface Consonants{
+    + LETTER_O: char
+    + LETTER_X: char
+    + SPACE: char
+}
+
+Player - Referee
+Board - Player : views
+Board -- Consonants : uses
+Game -- Consonants : uses
+Player "1" -- "*" Game : plays
+Referee "1" -- "1" Game : monitors
+Player <|-- HumanPlayer
+Player <|-- RandomPlayer
+RandomPlayer <|-- BlockingPlayer
+BlockingPlayer <|-- SmartPlayer
+Game "1" *-- "1" Board : has a
+RandomGenerator "1" --o "1" RandomPlayer
+
+@enduml

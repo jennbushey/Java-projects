@@ -1,6 +1,6 @@
 # Java-projects
 
-Java data analysis projects and challenges where I practice my skills.
+Java projects and challenges to practice my skills.
 
 ## [Tic-Tac-Toe](https://github.com/jennbushey/Java-projects/tree/main/tic-tac-toe)
 

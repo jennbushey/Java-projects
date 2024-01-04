@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 /*
  * File Name: Sorter.java
- * Assignment: ENSF 614 Lab 6 - Exercise B
+ * Assignment: ENSF 614 Lab 6 - Exercise B and C
  * Completed by: Jenn Bushey
  * Submission Date: November 10, 2023
  */

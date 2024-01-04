@@ -28,6 +28,8 @@ Please follow these steps:
         2.0 3.0 4.0 5.0
 -   Two Concrete classes called BubbleSorter and InsertionSorter that one implements a bubble sort algorithm and the other one implements insertion sort algorithm.
 
+Now, add a new algorithm called SelectionSorter that uses selection-sort and can be used by the class client without making any changes to the class MyVector.
+
 ### Program Output
 
 ![output](./images/output.png)

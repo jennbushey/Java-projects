@@ -1,0 +1,40 @@
+@startuml
+java.awt.Graphics -- Component
+java.awt.Graphics -- Text
+Text .. java.awt.Graphics.drawString : uses
+
+interface Component{
+    + draw(g: Graphics): void
+}
+
+class Text{
+    -x: int
+    -y: int
+    -text: String
+    +draw(g: Graphics): void
+}
+
+abstract class Decorator{
+    -cmp: Component
+    -x: int
+    -y: int
+    -width: int
+    -height: int
+}
+
+class BorderDecorator{
+    +draw(g: Graphics) : void
+}
+
+class ColorFrameDecorator{
+    +draw(g: Graphics) : void
+}
+
+Component <|.. Text 
+Component <|.. Decorator
+Component --o Decorator
+Decorator <|.. BorderDecorator
+Decorator <|.. ColorFrameDecorator
+
+
+@enduml

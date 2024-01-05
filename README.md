@@ -15,3 +15,7 @@ A command line program to illustrate the Strategy Design Pattern in java that ca
 ## [Observer Design Pattern](https://github.com/jennbushey/Java-projects/tree/main/observer-design-pattern)
 
 A command line program to illustrate the Observer Design Pattern in java.
+
+## [Decorator Design Pattern](https://github.com/jennbushey/Java-projects/tree/main/decorator-design-pattern)
+
+A java swing program to illustrate the Decorator Design Pattern.

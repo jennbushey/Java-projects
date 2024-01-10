@@ -1,0 +1,17 @@
+# Ignore compiled Java classes
+/out/
+/bin/
+/target/
+
+# Ignore external libraries
+/lib/
+
+# Ignore JAR files
+*.JAR
+
+# Ignore editable documents
+*.docx
+*.pptx
+
+# Ignore video files
+*.mp4

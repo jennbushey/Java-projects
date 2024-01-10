@@ -1,0 +1,53 @@
+' Documentation -> https://plantuml.com/sequence-diagram 
+
+****************** Registering User ******************
+
+@startuml
+
+autonumber
+
+actor User
+participant Controller
+participant LoginController
+participant MainMenu
+participant LoginApp
+participant RegisterInterface
+participant RegisterUserInterface
+participant AddUsers
+participant Database
+
+User -> Controller ++: Start Application
+Controller -> MainMenu ++: Automatic Call
+deactivate Controller
+
+MainMenu -> Controller ++: Click "Login"
+deactivate MainMenu
+Controller -> LoginApp ++ : Open Login GUI
+deactivate Controller 
+
+LoginApp -> Controller ++: Click "Register"
+deactivate LoginApp
+Controller -> RegisterInterface ++: Open Register GUI
+deactivate Controller
+
+RegisterInterface -> LoginController ++: Click "Enter"
+deactivate RegisterInterface
+
+LoginController -> AddUsers ++: Automatic Call
+deactivate LoginController
+
+AddUsers -> Database ++ : Add User Information to Database
+deactivate AddUsers
+Database --> LoginController ++: Return
+deactivate Database
+
+LoginController --> RegisterInterface ++: Return
+deactivate LoginController
+
+RegisterInterface -> Controller ++: Automatic Call
+deactivate RegisterInterface
+Controller -> RegisterUserInterface ++: Open Register User GUI
+deactivate Controller
+
+
+@enduml

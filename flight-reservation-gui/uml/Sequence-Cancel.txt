@@ -1,0 +1,25 @@
+' Documentation -> https://plantuml.com/sequence-diagram 
+
+****************** CANCEL BOOKING SEQUENCE ******************
+@startuml
+autonumber
+actor User
+participant View
+participant Controller
+participant EmailSystem as ES
+database Database as DB
+User -> View ++ : click "Cancel Flight" button
+View -> Controller ++ : get cancel flight view
+Controller -> View : display cancel flight view
+User -> View : User enters booking number and email
+View -> Controller : pass booking number
+View -> View ++ : validate booking number and email
+deactivate View
+View -> Controller : pass confirmation
+deactivate View
+Controller -> DB ++ : remove booking from database
+DB --> Controller -- : success
+Controller -> ES ++ : send cancellation email
+ES --> User -- : send email confirming cancellation 
+deactivate Controller
+@enduml

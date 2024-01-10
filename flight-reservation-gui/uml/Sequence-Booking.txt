@@ -1,0 +1,63 @@
+' Documentation -> https://plantuml.com/sequence-diagram 
+
+****************** BOOK FLIGHT ******************
+@startuml
+autonumber
+actor User
+participant View
+participant Controller
+participant PaymentSystem as PS
+participant EmailSystem as ES
+database Database as DB
+
+note right of User: The user can browse flights directly \nfrom the Main Menu or log in \nfirst and then browse flights. 
+User -> View ++ : click "Browse Flights" button
+View -> Controller ++ : get Browse Flights View
+Controller -> DB ++: get flights from database
+DB --> Controller -- : return
+Controller -> View : display flight selection
+alt user enters departure location
+    User -> View : enter airport code and select "Search Departure Airport" button
+    View -> Controller : pass airport location
+    Controller -> View : display filtered selection
+else user enters arrival location
+    User -> View : enter airport code and select "Search Arrival Airport" button
+    View -> Controller : pass airport location
+    Controller -> View : display filtered selection
+else back
+    User -> View : click "Back" button
+        note over User: User has the option to go back to the \nprevious view on every view going forward.
+    View ->] : take user back to Main Menu
+end
+User -> View : double click on flight
+View -> Controller : pass flight ID 
+Controller -> View : display seat selection
+User -> View : select seat button
+View -> Controller : pass seat ID
+Controller -> View : display prompt for optional insurance
+User -> View : user selects insurance option 
+View -> Controller : pass insurance selection
+Controller -> View : display payment methods
+User -> View : click a payment method
+alt Visa
+    View -> Controller : pass payment selection
+    User -> View : completes form
+    View -> View ++ : validates credit card number and CVV
+    View -> Controller -- : pass information
+else MasterCard
+    View -> Controller : pass payment selection
+    User -> View : completes form
+    View -> View ++: validates credit card number and CVV
+    View -> Controller -- : pass information
+end
+Controller -> View : display confirmation view
+User -> View : click "Confirm Flight?" button
+View -> Controller : pass confirmation
+deactivate View
+Controller -> PS ++ : process payment
+PS --> Controller -- : success
+Controller -> ES ++: initiate email system
+deactivate Controller
+ES --> User -- : send email containing ticket and receipt 
+@enduml
+

@@ -19,3 +19,7 @@ A command line program to illustrate the Observer Design Pattern in java.
 ## [Decorator Design Pattern](https://github.com/jennbushey/Java-projects/tree/main/decorator-design-pattern)
 
 A java swing program to illustrate the Decorator Design Pattern.
+
+## [Flight Reservation GUI](https://github.com/jennbushey/Java-projects/tree/main/flight-reservation-gui)
+
+A project to practice the complete process of design and development of a software project, using a systematic design methodology. Java Swing for the front end and Java for the backend connecting to a MySQL database.
